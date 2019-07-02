@@ -31,9 +31,8 @@ func PostThank(c echo.Context) error {
 
 func GetThanksCount(c echo.Context) error {
 	var s database.Summaries
-	diff_string := c.QueryParam("diff")
 	var diff int
-	diff, _ = strconv.Atoi(diff_string)
+	diff, _ = strconv.Atoi(c.QueryParam("diff"))
 	db, err := database.NewThanksRepository()
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err)
